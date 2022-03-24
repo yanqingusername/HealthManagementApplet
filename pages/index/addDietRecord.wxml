@@ -1,0 +1,70 @@
+<view class="page">
+  <view class="page flex-col">
+    <view class="bd1 flex-col">
+      <view class="block3 flex-row">
+        <text class="word2">{{meal_type}}餐时间</text>
+        <view class="layer1 flex-col" bindtap="start_time_show">
+          <picker mode="time" value="{{hoursminute}}" start="00:00" end="24:00" bindchange="bindTimeChange" >
+            <view >
+              当前选择: {{hoursminute}}
+            </view>
+          </picker>
+          <!-- <view class="layer2 flex-row">
+            <text wx:if="{{time_chosen==false}}" class="word3">请选择{{meal_type}}餐时间</text>
+            <text wx:if="{{time_chosen==true}}" class="word3">{{startTime}}</text>
+            <image class="label2" referrerpolicy="no-referrer" src="/image/icons/right.png" mode="aspectFill"/>
+          </view> -->
+        </view>
+      </view>
+      <view class="block4 flex-col"></view>
+      <view style="display:flex;">
+        <text class="txt1">食物清单</text>
+        <view wx:if="{{img_arr.length!=0&&img_arr.length<9}}" class="block9 flex-col">
+          <view bindtap="upimg" class="wrap1 flex-row">
+            <image class="label3" referrerpolicy="no-referrer" src="/image/icons/camera.png" />
+            <text class="word4">拍照记录</text>
+          </view>
+        </view>
+      </view>
+      <view wx:if="{{img_arr.length==0}}" class="block5 flex-col">
+        <view bindtap="upimg" class="wrap1 flex-row">
+          <image class="label3" referrerpolicy="no-referrer" src="/image/icons/camera.png" />
+          <text class="word4">拍照记录</text>
+        </view>
+      </view>
+      <view class="P5 app_flex" style="height: auto;">
+        <block>
+          <view class="img_box">
+            <block wx:if="{{img_arr.length!=0}}">
+              <view class="img_item" wx:for="{{img_arr}}" wx:for-item="item">
+                <image bindtap="previewImg" data-src="{{item}}" class="img_item_i" data-index='{{index}}' src="{{item}}" mode="aspectFill"></image>
+                <block>
+                  <image bindtap="delImg" data-index="{{index}}" src="/image/icons/deleteTest.png" class="closeImv"></image>
+                </block>
+              </view>
+            </block>
+          </view>
+        </block>
+      </view>
+      <text class="word5">如果忘记拍照可以文字记录哦～</text>
+      <view wx:for="{{info.details}}" wx:key="key" class="block6 flex-row">
+        <view class="group1 flex-col" >
+          <input class="word6" placeholder="请填写食物名称" id="food-{{index}}" bindinput="setFood" value="{{meal_content}}"></input>
+        </view>
+        <view class="group2 flex-col" >
+          <input class="txt2" placeholder="请填写摄入量" id="amount-{{index}}" bindinput="setAmount" value="{{intake_amount}}"></input>
+        </view>
+      </view>
+      <view class="block7 flex-col" bindtap="addFood">
+        <view class="mod1 flex-row">
+          <image class="wrap2 flex-col" src="/image/icons/add.png"></image>
+          <text class="info1">添加食物</text>
+        </view>
+      </view>
+      <view class="block8 flex-col">
+        <button class="bd2 flex-col" bindtap="submit"><text class="word7">保存</text></button>
+      </view>
+    </view>
+  </view>
+</view>
+<!-- <timePicker pickerShow="{{startIsPickerShow}}" id="picker" wx:if="{{startIsPickerRender}}" bind:hidePicker="start_time_hide" bind:setPickerTime="set_start_time" config="{{pickerConfig}}"></timePicker> -->

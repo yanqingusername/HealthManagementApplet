@@ -1,0 +1,92 @@
+<view class="page">
+  <view class="page flex-col">
+    <view class="bd1 flex-col">
+      <view class="outer3 flex-row">
+        <text class="word1">餐次</text>
+        <text class="txt1">{{count}}/3</text>
+        <view bindtap="changeTimeBefore" class="view_1">
+          <image class="icon1"  referrerpolicy="no-referrer" src="/image/icons/triangle_left.png"></image>
+        </view>
+        
+        <view class="section1 flex-col"><text class="info2">{{date}}</text></view>
+        <view bindtap="changeTimeNext" class="view_2">
+          <image class="section2 flex-col"  src="/image/icons/triangle_right.png"></image>
+        </view>
+        <view class="view_3">
+          <image class="icon2"  referrerpolicy="no-referrer" src="/image/icons/message.png" bindtap="goMessage"></image>
+        </view>
+        <text class="span" wx:if="{{digital>0&&digital<=99}}">{{digital}}</text> 
+        <text class="span" wx:if="{{digital>99}}">99+</text>
+        <!-- <text class="span">99+</text> -->
+      </view>
+      <view class="outer4 flex-row">
+        <view class="layer3 flex-col" bindtap="addDietRecord" data-type="1" data-time="{{date}}">
+          <view class="section3 flex-col">
+            <image class="box1 flex-col" src="/image/icons/milk.png"></image>
+            <text class="word2">+早餐</text>
+          </view>
+        </view>
+        <view class="layer3 flex-col" bindtap="addDietRecord" data-type="2" data-time="{{date}}" >
+          <view class="section4 flex-col">
+            <image class="label2" referrerpolicy="no-referrer" src="/image/icons/lunch.png"></image>
+            <text class="word3">+午餐</text>
+          </view>
+        </view>
+        <view class="layer4 flex-col" bindtap="addDietRecord" data-type="3" data-time="{{date}}" >
+          <view class="layer5 flex-col">
+            <image class="outer5 flex-col" src="/image/icons/dinner.png"></image>
+            <text class="word4">+晚餐</text>
+          </view>
+        </view>
+        <view class="layer6 flex-col" bindtap="addDietRecord" data-type="4" data-time="{{date}}">
+          <view class="section5 flex-col">
+            <image class="mod1 flex-col" src="/image/icons/addMeal.png"></image>
+            <text class="word5">+加餐</text>
+          </view>
+        </view>
+      </view>
+      <view class="P1">
+        <block wx:for="{{mealInfoList}}">
+            <view class="P2 app_font" bindtap="" data-id = "{{item.record_num}}" data-type="{{item.type}}">
+                <view class="group_food"> 
+                  <view class="food_title" wx:if="{{item.meal_type==1}}">早餐</view>    
+                  <view class="food_title" wx:if="{{item.meal_type==2}}">午餐</view>    
+                  <view class="food_title" wx:if="{{item.meal_type==3}}">晚餐</view>    
+                  <view class="food_title" wx:if="{{item.meal_type==4}}">加餐</view>    
+                  <view class="food_time">{{item.mealTime}}</view>
+                </view>
+                <view class="group_column">
+                  <view class="group_food_2">
+                    <view class="group_class_1" wx:for="{{item.meal_content_arr}}">
+                      {{item}}
+                    </view>
+                  </view>
+                  <view class="group_food_2">
+                    <view class="group_class_1"  wx:for="{{item.intake_amount_arr}}">
+                      {{item}}
+                    </view>
+                  </view>
+                </view>
+                <block wx:if="{{item.img_url.length!=0}}">
+                  <view class="img_box">
+                    <view class="img_item" wx:for="{{item.img_url}}" wx:for-item="item1">
+                      <image bindtap="previewImg" data-src="{{item.img_url}}" class="img_item_i" data-index='{{index}}'
+                        src="{{item1}}" mode="aspectFill"></image>
+                    </view>
+                  </view>
+                </block>
+                </view>
+              </block>
+            </view>
+        
+        <view hidden wx:if="{{alreadyChecked==true}}">
+            <image class="app_noinfo_img" src="../../image/icons/nodata.png" mode="widthFix"></image>
+            <view class="app_noinfo_desc">{{tip}}</view>
+        </view>
+        <view  wx:if="{{alreadyChecked_temp==true}}">
+            <image class="app_noinfo_img" src="../../image/icons/nodata.png" mode="widthFix"></image>
+            <view class="app_noinfo_desc">{{tip_temp}}</view>
+        </view>
+    </view>
+    </view>
+  </view>

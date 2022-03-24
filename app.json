@@ -1,0 +1,45 @@
+{
+    "pages": [
+        "pages/login/login",
+        "pages/index/index",
+        "pages/index/addDietRecord",
+        
+        
+        "pages/index/mealInfo",
+        "pages/personalCenter/index",
+        "pages/personalCenter/baseInfoEdit",
+        "pages/personalCenter/questionnaire",
+        "pages/personalCenter/healthReport",
+        "pages/personalCenter/history",
+        "pages/personalCenter/sportsData",
+        "pages/index/message",
+        
+        
+        "pages/personalCenter/question"
+        
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "",
+        "navigationBarTextStyle": "black"
+    },
+    "sitemapLocation": "sitemap.json",
+    "tabBar": {
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "iconPath": "/image/icons/record-normal.png",
+                "selectedIconPath": "/image/icons/record.png",
+                "text": "膳食记录"
+            },
+            {
+                "pagePath": "pages/personalCenter/index",
+                "iconPath": "/image/icons/mine.png",
+                "selectedIconPath": "/image/icons/mine-selected.png",
+                "text": "我的"
+            }
+        ],
+        "selectedColor": "#23CBC4"
+    }
+}

@@ -1,0 +1,68 @@
+<view class="page">
+  <view class="page flex-col">
+    <view class="section1 flex-col">
+      
+    
+      <view class="block3 flex-row">
+        <text class="info1">姓名</text>
+        <input class="info2" bindinput="getName" placeholder="请填写志愿者真实姓名" value="{{baseInfo.name}}" >{{}}</input>
+      </view>
+      <view class="hr"></view>
+      <view class="block5 flex-row" >
+        <text class="word2">编号</text>
+        <input class="info3"  value="{{baseInfo.user_id}}" 	disabled="true" ></input>
+      </view>
+      <view class="hr"></view>
+      <!-- <view class="hr"></view> -->
+      <view class="block5 flex-row" >
+        <text class="word2">学号</text>
+        <input class="info3" bindinput="getSN" placeholder="请填写学号" value="{{baseInfo.student_number}}" ></input>
+      </view>
+      <view class="hr"></view>
+      <view class="block7 flex-row" >
+        <text class="info4">性别</text>
+        <picker class='my_picker txt1' bindchange="typeChange" value="{{baseInfo.gender==''?null:baseInfo.gender}}"
+          range="{{typeArr}}">
+          <view class="picker">
+            {{baseInfo.gender===''?'请选择性别':typeArr[baseInfo.gender]}}
+          </view>
+        </picker>
+        <view class="group1 flex-col">
+          <image src="/image/icons/right.png" mode="aspectFill"></image>
+        </view>
+      </view>
+      <view class="hr"></view>
+      <view class="block9 flex-row" >
+        <text class="info5">生日</text>
+        <!-- <text class="word3">请选择出生日期</text> -->
+        <picker mode="date" bindchange="bindDateChange" value="{{baseInfo.birth==''?'请选择出生日期':baseInfo.birth}}" >
+          <input value="{{baseInfo.birth==''?'请选择出生日期':baseInfo.birth}}" class="word3" disabled="true" />
+        </picker>
+
+        <view class="mod2 flex-col">
+          <image src="/image/icons/right.png" mode="aspectFill"></image>
+        </view>
+      </view>
+      <view class="hr"></view>
+      <view class="block11 flex-row" >
+        <text class="word4">学校</text>
+        <!-- <text class="word5">请选择所在学校</text> -->
+        <picker class='my_picker word5' bindchange="bindSchoolChange" value="{{schoolIndex}}" range-key='name'
+          range="{{schoolArr}}">
+          <view class="picker" style="font-size: 28rpx;">
+            {{schoolIndex===''?'请选择学校':schoolArr[schoolIndex].name}}
+          </view>
+        </picker>
+        <view class="main1 flex-col">
+          <image src="/image/icons/right.png" mode="aspectFill"></image>
+        </view>
+      </view>
+      <view class="hr"></view>
+      <view class="block13 flex-col">
+        <button class="box1 flex-col" bindtap="savedata">
+        <view class="txt2">保存</view>
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

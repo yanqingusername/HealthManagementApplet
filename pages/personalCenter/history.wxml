@@ -1,0 +1,160 @@
+<view class="page flex-col">
+  <view hidden="{{height_weight}}" >
+    <view wx:if="{{height_weight_data.length>0}}">
+      <block wx:for="{{height_weight_data}}" wx:for-item="hw" >
+        <view class="layer1 flex-col">
+          <text class="word2">{{hw.create_time}}</text>
+          <view class="data_items flex-row">
+            <text class="word3">身高</text>
+            <text class="word4">{{hw.height}}{{hw.height_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">体重</text>
+            <text class="word4">{{hw.Weight}}{{hw.Weight_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">腰围</text>
+            <text class="word4">{{hw.waist}}cm</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">BMI</text>
+            <text class="word4">{{hw.bmi}}{{hw.bmi_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">WHtR(腰高比)</text>
+            <text class="word4">{{hw.whtr}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view wx:else>
+      <view>
+        <text>暂无数据</text>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{blood_pressure}}">
+    <view wx:if="{{blood_pressure_data.length>0}}">
+      <block wx:for="{{blood_pressure_data}}" wx:for-item="bp">
+        <view class="layer1 flex-col">
+          <text class="word2">{{bp.create_time}}</text>
+          <view class="data_items flex-row">
+            <text class="word3">心率</text>
+            <text class="word4">{{bp.heart_rate}}次/分</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">收缩压</text>
+            <text class="word4">{{bp.systolic}}{{bp.systolic_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">舒张压</text>
+            <text class="word4">{{bp.diastolic}}{{bp.diastolic_unit}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view wx:else>
+      <view>
+        <text>暂无数据</text>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{bone_density}}">
+    <view wx:if="{{bone_density_data.length>0}}">
+      <block wx:for="{{bone_density_data}}" wx:for-item="bd">
+        <view class="layer1 flex-col">
+          <text class="word2">{{bd.create_time}}</text>
+          <view class="data_items flex-row">
+            <text class="word3">T值</text>
+            <text class="word4">{{bd.bmd_t}}{{bd.bmd_t_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">Z值</text>
+            <text class="word4">{{bd.bmd_z}}{{bd.bmd_z_unit}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view wx:else>
+      <view>
+        <text>暂无数据</text>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{body_composition}}">
+    <view wx:if="{{body_composition_data.length>0}}">
+      <block wx:for="{{body_composition_data}}" wx:for-item="bc">
+        <view class="layer1 flex-col">
+          <text class="word2">{{bc.create_time}}</text>
+          <view class="data_items flex-row">
+            <text class="word3">体脂肪率</text>
+            <text class="word4">{{bc.FatPercentage}}{{bc.FatPercentage_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">基础代谢率</text>
+            <text class="word4">{{bc.BasicMetabolism}}{{bc.BasicMetabolism_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">肌肉量</text>
+            <text class="word4">{{bc.MuscleMass}}{{bc.MuscleMass_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">肌肉率</text>
+            <text class="word4">{{bc.muscle}}{{bc.muscle_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">骨量</text>
+            <text class="word4">{{bc.BodyBone}}{{bc.BodyBone_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">骨骼肌率</text>
+            <text class="word4">{{bc.sm}}{{bc.sm_unit}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">体水分率</text>
+            <text class="word4">{{bc.BodyWaterContent}}{{bc.BodyWaterContent_unit}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view wx:else>
+      <view>
+        <text>暂无数据</text>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{biochemical_examination}}">
+    <view wx:if="{{biochemical_examination_data.length==true}}">
+      <block wx:for="{{biochemical_examination_data}}" wx:for-item="be">
+        <view class="layer1 flex-col">
+          <text class="word2">{{be.create_time}}</text>
+          <view class="data_items flex-row">
+            <text class="word3">血常规</text>
+            <text class="word4">{{be.routine_blood_test}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3"> 尿常规</text>
+            <text class="word4">{{be.urinalysis}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">肝功能</text>
+            <text class="word4">{{be.liver}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">肾功能4项</text>
+            <text class="word4">{{be.renal}}</text>
+          </view>
+          <view class="data_items flex-row">
+            <text class="word3">尿微量白蛋白</text>
+            <text class="word4">{{be.urinary_microalbumin}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view wx:else>
+      <view>
+        <text>暂无数据</text>
+      </view>
+    </view>
+  </view>
+</view>

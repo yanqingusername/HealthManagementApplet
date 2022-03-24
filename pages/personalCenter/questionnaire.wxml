@@ -1,0 +1,27 @@
+<view class="page">
+  <view class="page flex-col">
+    <view class="outer1 flex-col">
+      <view class="box3 flex-col">
+      <view wx:for="{{questionlist}}"wx:for-item="item" >
+        <view class="layer1-0 flex-col" wx:if="{{item.status==1}}">
+          <view class="section1-0 flex-row" bindtap="go_test" data-type="1" data-id="{{item.id}}" data-title="{{item.name}}">
+            <view class="content">{{item.name}}</view>
+            <image class="icon2-0" referrerpolicy="no-referrer" src="/image/icons/done.png" />
+            <image src="/image/icons/right.png" class="last_right"/>
+            <!-- <view class="wrap1-0 flex-col"></view> -->
+          </view>
+        </view>
+        <view class="layer1-1 flex-col" wx:if="{{item.status==0}}">
+          <view class="section1-1 flex-row"  bindtap="go_test" data-type="2" data-id="{{item.id}}" data-title="{{item.name}}">
+            <view class="content">{{item.name}}</view>
+            <image class="icon2-1" referrerpolicy="no-referrer" src="/image/icons/incomplete.png" />
+            <image src="/image/icons/right.png" class="last_right"/>
+            <!-- <view class="wrap1-1 flex-col"></view> -->
+          </view>
+        </view>
+      </view>
+        
+      </view>
+    </view>
+  </view>
+</view>

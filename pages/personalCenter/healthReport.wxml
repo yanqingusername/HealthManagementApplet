@@ -1,0 +1,199 @@
+<view class="page">
+
+  <view class="page flex-col">
+    <view class="outer1 flex-col">
+      <view class="main3 flex-col">
+        <view class="section1 flex-row">
+          <text class="txt2">基本体格检查</text>
+          <text class="word1">{{time}}</text>
+        </view>
+        <view class="section2 flex-row">
+          <text class="paragraph1">
+            身高
+            <br />
+            体重
+            <br />
+            腰围
+            <br />
+            BMI
+            <br />
+            WHtR（腰高比）
+          </text>
+          <text class="infoBox1">
+            {{cur_height_weight.height}}{{cur_height_weight.height_unit}}
+            <br />
+            {{cur_height_weight.Weight}}{{cur_height_weight.Weight_unit}}
+            <br />
+            {{cur_height_weight.waist}}cm
+            <br />
+            {{cur_height_weight.bmi}}{{cur_height_weight.bmi_unit}}
+            <br />
+            {{cur_height_weight.whtr}}
+          </text>
+        </view>
+        <view class="section3 flex-row" bindtap="go_history" data-type="1">
+          <text class="word2">查看历史记录</text>
+          <view class="box1 flex-col">
+            <image src="/image/icons/right.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+      <view class="main4 flex-col">
+        <view class="block1 flex-row">
+          <text class="word3">血压</text>
+          <text class="txt3">{{time}}</text>
+        </view>
+        <view class="block2 flex-row">
+          <text class="paragraph2">
+            心率
+            <br />
+            收缩压
+            <br />
+            舒张压
+          </text>
+          <text class="infoBox2">
+            {{cur_blood_pressure.heart_rate}}次/分
+            <br />
+            {{cur_blood_pressure.systolic}}{{cur_blood_pressure.systolic_unit}}
+            <br />
+            {{cur_blood_pressure.diastolic}}{{cur_blood_pressure.diastolic_unit}}
+          </text>
+        </view>
+        <view class="block3 flex-row" bindtap="go_history" data-type="2">
+          <text class="info1">查看历史记录</text>
+          <view class="layer2 flex-col">
+            <image src="/image/icons/right.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+      <view class="main5 flex-col">
+        <view class="section4 flex-row">
+          <text class="word4">骨密度</text>
+          <text class="txt4">{{time}}</text>
+        </view>
+        <view class="section5 flex-row">
+          <text class="paragraph3">
+            T值
+            <br />
+            Z值
+          </text>
+          <text class="paragraph4">
+            {{cur_bone_density.bmd_t}}{{cur_bone_density.bmd_t_unit}}
+            <br />
+            {{cur_bone_density.bmd_z}}{{cur_bone_density.bmd_z_unit}}
+          </text>
+        </view>
+        <view class="section6 flex-row" bindtap="go_history" data-type="3">
+          <text class="info2">查看历史记录</text>
+          <view class="outer2 flex-col">
+            <image src="/image/icons/right.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+      <view class="main6 flex-col">
+        <view class="layer3 flex-row">
+          <text class="word5">人体成分</text>
+          <text class="txt5">{{time}}</text>
+        </view>
+        <view class="layer4 flex-row">
+          <text class="paragraph5">
+            体脂肪率
+            <br />
+            基础代谢率
+            <br />
+            肌肉量
+            <br />
+            肌肉率
+            <br />
+            骨量
+            <br />
+            骨骼肌率
+            <br />
+            体水分率
+          </text>
+          <text class="infoBox3">
+            {{cur_body_composition.FatPercentage}}{{cur_body_composition.FatPercentage_unit}}
+            <br />
+            {{cur_body_composition.BasicMetabolism}}{{cur_body_composition.BasicMetabolism_unit}}
+            <br />
+            {{cur_body_composition.MuscleMass}}{{cur_body_composition.MuscleMass_unit}}
+            <br />
+            {{cur_body_composition.muscle}}{{cur_body_composition.muscle_unit}}
+            <br />
+            {{cur_body_composition.BodyBone}}{{cur_body_composition.BodyBone_unit}}
+            <br />
+            {{cur_body_composition.sm}}{{cur_body_composition.sm_unit}}
+            <br />
+            {{cur_body_composition.BodyWaterContent}}{{cur_body_composition.BodyWaterContent_unit}}
+          </text>
+        </view>
+        <view class="layer5 flex-row" bindtap="go_history" data-type="4">
+          <text class="word6">查看历史记录</text>
+          <view class="main7 flex-col">
+            <image src="/image/icons/right.png" mode="aspectFill"></image>
+          </view>
+        </view>
+      </view>
+      <view class="main8 flex-col">
+        <view class="box2 flex-col">
+          <view class="group1 flex-row">
+            <text class="word7">生化检查</text>
+            <text class="word8"> {{time}}</text>
+          </view>
+          <view class="group2 flex-row">
+            <text class="infoBox4">
+              血常规
+              <br />
+              尿常规
+              <br />
+              肝功能
+              <br />
+              肾功能4项
+              <br />
+              尿微量白蛋白
+            </text>
+            <text class="paragraph6">
+              {{cur_biochemical_examination.routine_blood_test}}
+              <br />
+              {{cur_biochemical_examination.urinalysis}}
+              <br />
+              {{cur_biochemical_examination.liver}}
+              <br />
+              {{cur_biochemical_examination.renal}}
+              <br />
+              {{cur_biochemical_examination.urinary_microalbumin}}
+            </text>
+          </view>
+          <view class="group3 flex-row" bindtap="go_history" data-type="5">
+            <text class="info3">查看历史记录</text>
+            <view class="group4 flex-col">
+              <image src="/image/icons/right.png" mode="aspectFill"></image>
+            </view>
+          </view>
+        </view>
+        <!-- <view class="box3 flex-col">
+          <view class="section7 flex-col">
+            <view class="layer6 flex-row">
+              <text class="word9">生化检查</text>
+              <text class="word10">-</text>
+            </view>
+            <view class="layer7 flex-col">
+              <text class="word11">照片</text>
+            </view>
+            <view class="layer8 flex-row" bindtap="go_history" data-type="6">
+              <text class="txt6">查看历史记录</text>
+              <view class="bd1 flex-col">
+                <image src="/image/icons/right.png" mode="aspectFill"></image>
+              </view>
+            </view>
+          </view>
+        </view> -->
+      </view>
+    </view>
+  </view>
+
+
+
+
+
+</view>

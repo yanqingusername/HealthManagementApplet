@@ -1,0 +1,8 @@
+{
+  "navigationBarTitleText": "添加膳食记录",
+  "usingComponents": {
+    "timePicker": "../../timePicker/timePicker"
+  },
+  "disableScroll":false
+  
+}

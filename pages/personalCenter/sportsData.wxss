@@ -1,0 +1,53 @@
+.page {
+  width: 750rpx;
+  height: 1334rpx;
+  background-color: rgba(255, 255, 255, 1);
+  align-items: center;
+}
+
+.layer1 {
+  width: 700rpx;
+}
+
+.word2 {
+  color: rgba(153, 153, 153, 1);
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  line-height: 40rpx;
+  margin: 54rpx 0 0 28rpx;
+}
+
+.word3 {
+  color: rgba(51, 51, 51, 1);
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  line-height: 40rpx;
+  margin: 0 0 0 28rpx;
+  text-align: left;
+  width: 50%;
+}
+
+.word4 {
+  color: rgba(51, 51, 51, 1);
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  line-height: 40rpx;
+  margin: 0 0 0 28rpx;
+  text-align: right;
+  width: 50%;
+}
+
+
+.flex-col {
+  display: flex;
+  flex-direction: column;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+.data_items{
+  margin: 20rpx 0 10rpx 0;
+  padding-bottom: 30rpx;
+  border-bottom:1rpx solid #F0F0F0;
+}

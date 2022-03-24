@@ -1,0 +1,38 @@
+<view class="page flex-col">
+  <view hidden="{{steps}}">
+    <view wx:if="{{steps_data.length>0}}">
+      <block wx:for="{{steps_data}}" wx:for-item="s" wx:key="key">
+        <view class="layer1 flex-col">
+          <view class="data_items flex-row">
+            <text class="word3">{{s.create_time}}</text>
+            <text class="word4">{{s.steps}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    <view wx:else>
+      <view>
+        <text>暂无数据</text>
+      </view>
+    </view>
+  </view>
+  <view hidden="{{heart_rate}}">
+      <view wx:if="{{heart_rate_data.length>0}}">
+      <block wx:for="{{heart_rate_data}}" wx:for-item="s" wx:key="key">
+        <view class="layer1 flex-col">
+          <view class="data_items flex-row">
+            <text class="word3">{{s.create_time}}</text>
+            <text class="word4">{{s.heart_rate}}</text>
+          </view>
+        </view>
+      </block>
+    </view>
+    
+    <view wx:else>
+      <view>
+        <text>暂无数据</text>
+      </view>
+    </view>
+  </view>
+ 
+</view>
