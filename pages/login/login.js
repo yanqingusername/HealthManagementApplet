@@ -12,27 +12,27 @@ Page({
         phoneCode: ["", ""], //正确的手机号和验证码
     },
     onLoad: function () {
-        wx.getUserInfo({
+        // wx.getUserInfo({
 
-                    success: res => { 
-                      app.globalData.avatarUrl = res.userInfo.avatarUrl
-                    }})
+        //             success: res => { 
+        //               app.globalData.avatarUrl = res.userInfo.avatarUrl
+        //             }})
         // 获取用户openid
         wx.login({
             success (res) {
               if (res.code) {
                 //获取用户微信头像和昵称
-                wx.getUserInfo({
-                    success: function(res) {
-                        var userInfo = res.userInfo
-                        var nickName = userInfo.nickName
-                        var avatarUrl = userInfo.avatarUrl
-                        var gender = userInfo.gender //性别 0：未知、1：男、2：女
-                        app.globalData.nickName = nickName;
-                        app.globalData.avatarUrl = avatarUrl;
-                        app.globalData.gender = gender;
-                    }
-                  })
+                // wx.getUserInfo({
+                //     success: function(res) {
+                //         var userInfo = res.userInfo
+                //         var nickName = userInfo.nickName
+                //         var avatarUrl = userInfo.avatarUrl
+                //         var gender = userInfo.gender //性别 0：未知、1：男、2：女
+                //         app.globalData.nickName = nickName;
+                //         app.globalData.avatarUrl = avatarUrl;
+                //         app.globalData.gender = gender;
+                //     }
+                //   })
                 //发起网络请求
                 request.request_get('/api/getOpenId.hn', {wxCode: res.code,type:"1"}, function (res) {
                     // debugger
@@ -168,5 +168,22 @@ Page({
                 })
             }
         })
-    }
+    },
+    getUserProfile(e) {
+        wx.getUserProfile({
+          desc: '用于完善会员资料',
+          success: (res) => {
+            var userInfo = res.userInfo
+            var nickName = userInfo.nickName
+            var avatarUrl = userInfo.avatarUrl
+            var gender = userInfo.gender //性别 0：未知、1：男、2：女
+            app.globalData.nickName = nickName;
+            app.globalData.avatarUrl = avatarUrl;
+            app.globalData.gender = gender;
+
+            wx.setStorageSync('avatarUrl', avatarUrl);
+            wx.setStorageSync('nickName', nickName);
+          }
+        })
+      },
 })

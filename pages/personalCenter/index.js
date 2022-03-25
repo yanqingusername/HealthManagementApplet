@@ -46,15 +46,18 @@ Page({
         }
     },
     onLoad: function () {
+        let avatarUrl = wx.getStorageSync('avatarUrl');
+        let nickName = wx.getStorageSync('nickName');
+
         this.setData({
-            touxiang:app.globalData.avatarUrl
+            touxiang:avatarUrl
         })
-        console.info("99999999990",app.globalData.avatarUrl)
+        console.info("99999999990",avatarUrl)
         let that = this;
         console.log("进入个人中心")
         that.setData({
-            name: app.globalData.nickName,
-            avatarUrl: app.globalData.avatarUrl,
+            name: nickName,
+            avatarUrl: avatarUrl,
         })
 
         //这里需要获取最新的体检数据，判断是否有新的问卷
@@ -161,6 +164,14 @@ Page({
                         console.info('回调', res)
                         if (res) {
                             if (res.success) {
+                                wx.removeStorageSync({
+                                    key: 'avatarUrl',
+                                    success(res) {}
+                                })
+                                wx.removeStorageSync({
+                                    key: 'nickName',
+                                    success(res) {}
+                                })
                                 wx.reLaunch({
                                     url: '/pages/login/login',
                                 })

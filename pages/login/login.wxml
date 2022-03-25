@@ -17,7 +17,7 @@
                 </view>
             </view>
             <view style="margin-top:159rpx;">
-                <button class='bt_login font_login' open-type="getUserInfo" form-type="submit">登录</button>
+                <button class='bt_login font_login' bind:tap="getUserProfile" form-type="submit">登录</button>
             </view>
         </form>
     </view>
