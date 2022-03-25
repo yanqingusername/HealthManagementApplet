@@ -72,51 +72,52 @@ Page({
         });
     },
     // 获取验证码按钮
-    getCode: function () {
+    getCode: utils.throttle(function () {
         let that = this;
         let phone = that.data.phone;
         let currentTime = that.data.currentTime;
         console.log("需要获取验证码的手机号" + phone);
         if (that.data.codeBtState) {
             console.log("还未到达时间");
-            return;
-        }
-        if (phone == '') {
-            box.showToast("请填写手机号");
-            return;
-        } 
-        if (!utils.checkPhone(phone)) {
-            box.showToast("手机号有误");
-            return;
-        }
-        request.request_get('/api/Verification.hn', { phone: phone }, function (res) {
-            console.info('回调', res)
-            if(res){
-                if(!res.success){
-                    box.showToast(res.msg);
-                    return;
-                }
-                that.setData({ phoneCode: [phone, res.msg] });
-            }
-        })
-
-        // 倒计时
-        var interval = setInterval(function () {
-            currentTime--;
-            that.setData({
-                codeBtText: currentTime + 's',
-                codeBtState: true
-            })
-            if (currentTime <= 0) {
-                clearInterval(interval)
+        } else {
+            if (phone == '') {
+                box.showToast("请填写手机号")
+            } else if (!utils.checkPhone(phone)) {
+                box.showToast("手机号有误")
+            } else {
+                //倒计时,不管验证码发送成功与否，都进入倒计时，防止多次点击造成验证码发送失败**************************
                 that.setData({
-                    codeBtText: '重新发送',
-                    currentTime: 60,
-                    codeBtState: false,
+                    codeBtState: true
+                })
+                var interval = setInterval(function () {
+                    currentTime--;
+                    that.setData({
+                        codeBtText: currentTime + 's'
+                    })
+                    if (currentTime <= 0) {
+                        clearInterval(interval)
+                        that.setData({
+                            codeBtText: '重新发送',
+                            currentTime: 60,
+                            codeBtState: false,
+                        })
+                    }
+                }, 1000);
+                
+                // 服务器发送验证码***********************
+                request.request_get('/api/Verification.hn', { phone: phone }, function (res) {
+                    console.info('回调', res)
+                    if(res){
+                        if(!res.success){
+                            box.showToast(res.msg);
+                            return;
+                        }
+                        that.setData({ phoneCode: [phone, res.msg] });
+                    }
                 })
             }
-        }, 1000);
-    },
+        }
+    },3000),
     // 登录
     login: function (e) {
         let that = this;
@@ -126,10 +127,7 @@ Page({
         var phoneCode = that.data.phoneCode;
         console.log('手机号和验证码：', phone, code);
         console.log(phoneCode);
-        if(phone == '15568429280' ){
-            that.toLogin(phone);
-            return;
-        }else if(phone == '13120916260' ){
+        if(phone == '13120916260' ){
             that.toLogin(phone);
             return;
         }else{
