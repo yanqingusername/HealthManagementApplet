@@ -271,9 +271,7 @@ Page({
         content: '确认提交该数据',
         showCancel: true, //是否显示取消按钮
         cancelText: "取消", //默认是“取消”
-        cancelColor: 'skyblue', //取消文字的颜色
         confirmText: "确定", //默认是“确定”
-        confirmColor: 'skyblue', //确定文字的颜色
         success: function (res) {
           if (res.confirm) {
             

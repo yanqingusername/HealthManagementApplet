@@ -129,7 +129,7 @@ Page({
         if(phone == '15568429280' ){
             that.toLogin(phone);
             return;
-        }else if(phone == '13678901238' ){
+        }else if(phone == '13120916260' ){
             that.toLogin(phone);
             return;
         }else{

@@ -17,7 +17,7 @@ checkbox{
 .question{
   position: relative;
   width: 95%;
-  color: #4BE1D2;
+  color: #119A94;
   /* border-style:solid; */
   padding-left: 10px;
   margin: 0 auto;
@@ -28,6 +28,7 @@ checkbox{
 }
 .title{
   font-weight: bold ;
+  color: #119A94;
 }
 scroll-view{
   top: 10px;
@@ -52,7 +53,7 @@ scroll-view{
   left: 10px;
   bottom: 18px;
   /* border-style:solid; */
-  color: #4BE1D2;
+  color: #119A94;
   font-weight: bold ;
 }
 .next-box{
@@ -60,7 +61,7 @@ scroll-view{
   position: absolute;
   right: 10px;
   bottom: 18px;
-  color: #4BE1D2;
+  color: #119A94;
   font-weight: bold ;
 }
 .page-count{
