@@ -5,7 +5,7 @@ const box = require('../../utils/box.js')
 Page({
     data: {
         touxiang:'',
-        questionstate:false,
+        questionstate:0,
         questionlist:[],
         name: '',
         school: '',
@@ -118,6 +118,17 @@ Page({
             name: app.globalData.userInfo.name,
             school: app.globalData.userInfo.school
         })
+
+        let data1={
+            openid:app.globalData.openid
+         }
+         console.info("调查问卷有无传参",data1)
+         request.request_get('/hmapi/getuserquestionstate.hn', data1, function (res) {
+             that.setData({
+                 questionstate:res.flag,
+             })
+             console.info('调查问卷有无回调', res)
+         })
     },
 
     enter_baseInfo: function () {

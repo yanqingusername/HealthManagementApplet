@@ -52,7 +52,7 @@
                       </view>
                         <view class="before-box new-flex" bindtap="before" >{{'<'}}上一题</view>
                         <view wx:if="{{pageindex>=pagesun}}">
-                          <view class="next-box" bindtap="submit" >提交</view>
+                          <view class="next-box new-flex" bindtap="submit" >提交</view>
                         </view>
                         <view wx:else>
                           <view class="next-box new-flex" bindtap="next" >下一题{{'>'}}</view>

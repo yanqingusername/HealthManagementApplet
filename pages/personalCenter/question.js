@@ -266,50 +266,66 @@ Page({
       }
     }//再次遍历question判断是否全部答完
     if(flag){
-      var submitquestions=that.questions;
-      for(var i=0;i<submitquestions.length;i++){
-        submitquestions[i].value="";
-         for(var j=0;j<submitquestions[i].question.length;j++){
-          submitquestions[i].question[j].answer="";
-          submitquestions[i].question[j].title="";
-          submitquestions[i].question[j].type="";
-         }
-      }
-      // console.info("答案",submitquestions)
-      //提交请求
-      // console.info("转换",submitquestions.join(","))
-      // var obj=JSON.parse(submitquestions);
-      var obj = JSON.stringify(submitquestions) //myObj：本js文件中的对象
-            let data = {
-              openid:app.globalData.openid,
-              questionid:that.questionid,
-              start_time:that.starttime,
-              end_time:time.formatTime1(new Date()),
-              answer:obj,
-              question_name:that.title,
-          }
-          console.log(data.answer)
-          request.request_post('/hmapi/Submitquestion.hn',data , function (res) {
-            console.info('调查问卷回调', res);  
-            if(!res.success){
-              wx.showToast({
-                title: "提交失败",
-                icon:"error"
-              })
-              return 
+      wx.showModal({
+        title: '温馨提示',
+        content: '确认提交该数据',
+        showCancel: true, //是否显示取消按钮
+        cancelText: "取消", //默认是“取消”
+        cancelColor: 'skyblue', //取消文字的颜色
+        confirmText: "确定", //默认是“确定”
+        confirmColor: 'skyblue', //确定文字的颜色
+        success: function (res) {
+          if (res.confirm) {
+            
+            var submitquestions=that.questions;
+            for(var i=0;i<submitquestions.length;i++){
+              submitquestions[i].value="";
+              for(var j=0;j<submitquestions[i].question.length;j++){
+                submitquestions[i].question[j].answer="";
+                submitquestions[i].question[j].title="";
+                submitquestions[i].question[j].type="";
+              }
             }
+            // console.info("答案",submitquestions)
+            //提交请求
+            // console.info("转换",submitquestions.join(","))
+            // var obj=JSON.parse(submitquestions);
+            var obj = JSON.stringify(submitquestions) //myObj：本js文件中的对象
+                  let data = {
+                    openid:app.globalData.openid,
+                    questionid:that.questionid,
+                    start_time:that.starttime,
+                    end_time:time.formatTime1(new Date()),
+                    answer:obj,
+                    question_name:that.title,
+                }
+                console.log(data.answer)
+                request.request_post('/hmapi/Submitquestion.hn',data , function (res) {
+                  console.info('调查问卷回调', res);  
+                  if(!res.success){
+                    wx.showToast({
+                      title: "提交失败",
+                      icon:"error"
+                    })
+                    return 
+                  }
+                  wx.showToast({
+                    title: res.msg,
+                    icon:"success"
+                  })
+                  wx.switchTab({
+                    url: '/pages/personalCenter/index',
+                })
+              })
+            // console.log(submitquestions)
             wx.showToast({
-              title: res.msg,
-              icon:"success"
+              title: '提交成功',
+              icon:'success'
             })
-            wx.switchTab({
-              url: '/pages/personalCenter/index',
-           })
-        })
-      // console.log(submitquestions)
-      wx.showToast({
-        title: '提交成功',
-        icon:'success'
+          } else if (res.cancel) {
+            
+          }
+        }
       })
     }else{
       wx.showToast({
