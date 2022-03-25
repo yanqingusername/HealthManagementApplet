@@ -11,20 +11,22 @@
   <view class="question">
     <scroll-view  style="width: 95%;height:{{scrollheght-120}}px;"  scroll-y="true" scroll-y scroll-top='{{topNum}}'>
       <view class="title"> {{currentquestionindex}}.{{question[currentquestionindex-1].title}}</view>
-            <View wx:if="{{question[currentquestionindex-1].type==1}}"><!--单选-->
-              <radio-group class="radio-group" bindchange="radioChange">
-                    <View class="radio" wx:for="{{question[currentquestionindex-1].answer}}" wx:for-item="item">
-                        <radio color="#007aff" value="{{item.value}}" checked="{{item.checked}}"/>{{item.value}}
+            <view wx:if="{{question[currentquestionindex-1].type==1}}"><!--单选-->
+              <radio-group class="radio-group" bindchange="radioChange" style="width: 100%;">
+                <label class="weui-cell weui-check__label"  wx:for="{{question[currentquestionindex-1].answer}}" wx:for-item="item">
+                    <view class="radio" style="padding: 20rpx 0rpx;display: flex;align-items: center;border-bottom: 1px solid #DDDDDD;">
+                        <radio color="#007aff" value="{{item.value}}" checked="{{item.checked}}" style="margin-top: 0rpx;"/>{{item.value}}
                         <view wx:if="{{item.value=='其他'&&item.checked==true}}">
                         <view class="textarea-other">
                         <textarea   bindinput="textareaChange"  style="height: auto" maxlength="200" placeholder="请输入其他内容" value="{{question[currentquestionindex-1].option.other}}"/>
                         </view>
                         </view>
-                      <view class="hr"></view>
-                    </View>
-                  </radio-group>
-          </View>
-          <View wx:if="{{question[currentquestionindex-1].type==2}}"><!--多选-->
+                      <!-- <view class="hr"></view> -->
+                    </view>
+                </label>
+              </radio-group>
+          </view>
+          <view wx:if="{{question[currentquestionindex-1].type==2}}"><!--多选-->
             <checkbox-group class="checkbox-group"  bindchange="checkboxChange">
                           <view  wx:for="{{question[currentquestionindex-1].answer}}" wx:key="{{item}}">
                               <checkbox value="{{item.value}}" checked="{{item.checked}}"/> {{item.value}}
@@ -36,24 +38,24 @@
                               <view class="hr"></view>
                           </view>
                       </checkbox-group>
-          </View>
-          <View wx:if="{{question[currentquestionindex-1].type==3}}"><!--输入框-->
-                    <view class="textarea-anser">
+          </view>
+          <view wx:if="{{question[currentquestionindex-1].type==3}}"><!--输入框-->
+                    <view class="textarea-anser" style="margin-top: 10rpx;">
                     <textarea  bindinput="textareaChange"  style="height: 200px" maxlength="200"	placeholder="请输入你的答案" value="{{question[currentquestionindex-1].option.other}}"/>
                     </view>
-          </View>
+          </view>
     </scroll-view>   
   </view>
         <view class="Bottom">
                       <view class="Bottom-progress">
                         <progress class="progress" percent="{{((pageindex)/pagesun)*100}}" border-radius='8'stroke-width="8" activeColor='#4BE1D2' ></progress>
                       </view>
-                        <view class="before-box" bindtap="before" >{{'<'}}上一题</view>
+                        <view class="before-box new-flex" bindtap="before" >{{'<'}}上一题</view>
                         <view wx:if="{{pageindex>=pagesun}}">
                           <view class="next-box" bindtap="submit" >提交</view>
                         </view>
                         <view wx:else>
-                          <view class="next-box" bindtap="next" >下一题{{'>'}}</view>
+                          <view class="next-box new-flex" bindtap="next" >下一题{{'>'}}</view>
                         </view>
                         <view class="page-count">{{pageindex}}/{{pagesun}}</view>
         </view>

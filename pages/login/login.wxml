@@ -12,7 +12,7 @@
                 </view>
                 <view class="P2" style="height:129rpx;">
                     <view class="P3">
-                        <input class='font_input' placeholder='输入验证码' type="number" name="code" maxlength="4" value="{{code}}"></input>
+                        <input class='font_input' placeholder='输入验证码' type="number" name="code" maxlength="4" bindinput="codeInput" value="{{code}}"></input>
                     </view>
                 </view>
             </view>
