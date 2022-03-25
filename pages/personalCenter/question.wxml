@@ -39,8 +39,8 @@
                       </checkbox-group>
           </view>
           <view wx:if="{{question[currentquestionindex-1].type==3}}"><!--输入框-->
-                    <view class="textarea-anser" style="margin-top: 10rpx;">
-                    <textarea type="number" bindinput="textareaChange"  style="height: 200px" maxlength="200"	placeholder="请输入你的答案" value="{{question[currentquestionindex-1].option.other}}"/>
+                    <view class="textarea-anser" style="margin-top: 10rpx;height: 80rpx;width: 98%;">
+                    <input type="number" bindinput="textareaChange"  style="height: 80rpx;padding-left:20rpx;" maxlength="30"	placeholder="请输入你的答案" value="{{question[currentquestionindex-1].option.other}}"/>
                     </view>
           </view>
     </scroll-view>   
