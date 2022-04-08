@@ -48,11 +48,22 @@
       </view>
       <text class="word5">如果忘记拍照可以文字记录哦～</text>
       <view wx:for="{{info.details}}" wx:key="key" class="block6 flex-row">
-        <view class="group1 flex-col" >
-          <input class="word6" placeholder="请填写食物名称" id="food-{{index}}" bindinput="setFood" value="{{meal_content}}"></input>
+        <view class="group1 flex-col" style="width:240rpx;">
+          <input class="word6" style="width:200rpx !important;" placeholder="请填写食物名称" id="food-{{index}}" bindinput="setFood" value="{{item.meal_content}}"></input>
         </view>
-        <view class="group2 flex-col" >
-          <input class="txt2" placeholder="请填写摄入量" id="amount-{{index}}" bindinput="setAmount" value="{{intake_amount}}"></input>
+        <view class="group2 flex-col" style="width:210rpx;">
+          <input class="txt2" style="width:170rpx !important;" placeholder="请填写摄入量" id="amount-{{index}}" bindinput="setAmount" value="{{item.intake_amount}}"></input>
+        </view>
+        <view class="group2 flex-col" catch:tap="bindCampany" data-id="company-{{index}}" style="width:150rpx;flex-direction: row;justify-content: space-between;display: flex;align-items: center;padding: 0rpx 10rpx 0rpx 16rpx;">
+          <picker bindchange="bindSelectrRemark" range="{{remarkList}}" style="width:100%;">
+            <view style="display: flex;align-items: center;width:100%;justify-content: space-between;">
+              <input class="txt2" disabled="{{true}}" style="width:80rpx !important;" id="company-{{index}}" placeholder="单位" bindinput="setCompany" value="{{item.intake_company}}"></input>
+              <image class="wrap2 flex-col" style="margin-top:0rpx;" src="/image/icons/right.png"></image>
+            </view>
+          </picker> 
+        </view>
+        <view class="group2 flex-col" style="background: #FFFFFF;padding-left: 0rpx;width:50rpx;flex-direction: row;justify-content: center;display: flex;align-items: center;" bindtap="delFood" data-index="{{index}}" >
+           <image src="/image/icons/deleteTest.png" class="closeView"></image>
         </view>
       </view>
       <view class="block7 flex-col" bindtap="addFood">

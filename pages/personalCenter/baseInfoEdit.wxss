@@ -9,7 +9,7 @@ page{
   z-index: 1;
   position: relative;
   width: 750rpx;
-  height: 1334rpx;
+  /* height: 1334rpx; */
   background-color: rgba(255, 255, 255, 1);
   overflow: hidden;
   justify-content: center;
@@ -18,7 +18,7 @@ page{
 .section1 {
   z-index: auto;
   width: 750rpx;
-  height: 1330rpx;
+  /* height: 1330rpx; */
 }
 
 .block3 {
@@ -267,8 +267,9 @@ page{
   background-color: rgba(35, 203, 196, 1);
   width: 400rpx;
   justify-content: center;
-  align-items: flex-end;
-  padding-right: 160rpx;
+  align-items: center;
+  color: #FFFFFF;
+  /* padding-right: 160rpx; */
 }
 
 .txt2 {

@@ -376,3 +376,7 @@ button:active {
   align-items: center;
   margin: 42rpx 0 0 260rpx;
 }
+.closeView{
+  width: 40rpx;
+  height: 40rpx;
+}

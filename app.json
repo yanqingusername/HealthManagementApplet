@@ -15,7 +15,12 @@
         "pages/index/message",
         
         
-        "pages/personalCenter/question"
+        "pages/personalCenter/question",
+        "pages/sportCenter/index",
+        "pages/myHealthReport/index",
+        "pages/expertSuggest/index",
+        "pages/healthInspectResults/index"
+        
         
     ],
     "window": {

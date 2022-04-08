@@ -16,22 +16,28 @@
             <view class="mod2 flex-col">
                 <view class="bd1 flex-col">
                     <text class="info1">我的运动</text>
-                    <view class="main1 flex-row">
-                        <view class="box2-0 flex-col">
-                            <view class="block1-0 flex-col" bindtap="enter_sports" data-type="1">
-                                <text class="word4-0">{{cur_sports_bracelet.steps}}</text>
-                                <text class="word5-0">今日步数</text>
+                    <view class="main1 flex-row" style="margin-top:10rpx;">
+                        <view class="box2-1 flex-col">
+                            <view class="block1-1 flex-col" bindtap="enter_sports" data-type="4">
+                                <text class="word4-1">{{avgOxygenSaturation}}</text>
+                                <text class="word5-1">血氧</text>
                             </view>
                         </view>
                         <view class="box2-1 flex-col">
                             <view class="block1-1 flex-col" bindtap="enter_sports" data-type="2">
-                                <text class="word4-1">{{cur_sports_bracelet.heart_rate}}次/分</text>
-                                <text class="word5-1">心率</text>
+                                <text class="word4-1">{{maxHeartRate}}</text>
+                                <text class="word5-1">最高心率</text>
+                            </view>
+                        </view>
+                        <view class="box2-0 flex-col">
+                            <view class="block1-0 flex-col" bindtap="enter_sports" data-type="1">
+                                <text class="word4-0">{{step}}</text>
+                                <text class="word5-0">今日步数</text>
                             </view>
                         </view>
                         <view class="box2-2 flex-col">
                             <view class="block1-2 flex-col" data-type="3" bindtap="enter_sports">
-                                <text class="word4-2">{{cur_sports_bracelet.calorie}}千卡</text>
+                                <text class="word4-2">{{caloriesBurned}}</text>
                                 <text class="word5-2">消耗热量</text>
                             </view>
                         </view>
@@ -66,7 +72,10 @@
                     </view>
                 </view>
             </view>
-            <text class="word9" bindtap="exit">退出登录</text>
+            <!-- <text class="word9" bindtap="exit">退出登录</text> -->
+            <view class="logout_view">
+                <view class="logout" bindtap="exit">退出登录</view>
+            </view>
         </view>
 
         <scroll-view class="scroll-view_H" scroll-x="true">

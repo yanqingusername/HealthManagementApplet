@@ -9,6 +9,7 @@ Page({
         codeBtState: false,
         currentTime: 60,
         phone: "",
+        code:"",
         phoneCode: ["", ""], //正确的手机号和验证码
     },
     onLoad: function () {
@@ -119,20 +120,19 @@ Page({
         }
     },3000),
     // 登录
-    login: function (e) {
+    login: utils.throttle(function (e) {
         let that = this;
-        let info = e.detail.value;
-        let phone = info.phone;
+        let phone = that.data.phone;
         let code = that.data.code;
-        var phoneCode = that.data.phoneCode;
+        // var phoneCode = that.data.phoneCode;
         console.log('手机号和验证码：', phone, code);
-        console.log(phoneCode);
+        // console.log(phoneCode);
         if(phone == '13120916260' ){
             that.toLogin(phone);
             return;
         }else{
             if (phone == '') {
-                box.showToast("请填写手机号");
+                box.showToast("请输入手机号");
                 return;
             } 
             if (!utils.checkPhone(phone)) {
@@ -140,24 +140,25 @@ Page({
                 return;
             }
             if (code == '') {
-                box.showToast("请填写验证码");
+                box.showToast("请输入密码");
                 return;
             } 
-            if (phoneCode[0] == ""){ // 没点击过获取验证码按钮，说明验证码肯定错误
-                box.showToast("验证码错误");
-                return;
-            } 
-            if (phoneCode[0] != phone) { // 验证码获取的手机号和提交的手机号不一致
-                box.showToast("验证码过期");
-                return;
-            }
-            if (phoneCode[1] != code) { // 验证码错误
-                box.showToast("验证码错误");
-                return;
-            } 
+            // if (phoneCode[0] == ""){ // 没点击过获取验证码按钮，说明验证码肯定错误
+            //     box.showToast("验证码错误");
+            //     return;
+            // } 
+            // if (phoneCode[0] != phone) { // 验证码获取的手机号和提交的手机号不一致
+            //     box.showToast("验证码过期");
+            //     return;
+            // }
+            // if (phoneCode[1] != code) { // 验证码错误
+            //     box.showToast("验证码错误");
+            //     return;
+            // } 
+            that.getUserProfile();
             that.toLogin(phone);
         }
-    },
+    },2000),
     toLogin:function (phone){
         console.log("开始登录" + phone);
         var data = {
@@ -179,7 +180,7 @@ Page({
             }
         })
     },
-    getUserProfile(e) {
+    getUserProfile() {
         wx.getUserProfile({
           desc: '用于完善会员资料',
           success: (res) => {

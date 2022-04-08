@@ -10,10 +10,12 @@ const utils = require('../../utils/utils.js')
  * Detail类 构造函数 
  * @param {string} meal_content 食物名称
  * @param {string} intake_amount 摄入量
+ * @param {string} intake_company 单位
  */
-function Detail(meal_content, intake_amount) {
+function Detail(meal_content, intake_amount,intake_company) {
     this.meal_content = meal_content;
     this.intake_amount = intake_amount;
+    this.intake_company = intake_company;
   }
   function Info() {
     this.details = [];
@@ -40,11 +42,15 @@ Page({
           },
         img_arr:[],
         info:{
-            details:[{meal_content:'',intake_amount:''}]
+            details:[{meal_content:'',intake_amount:'',intake_company:''}]
         },
         meal_type:'',
         meal_content_final:'',
-        intake_amount_final:''
+        intake_amount_final:'',
+        intake_company_final:'',
+        // remarkList: ['个','碗','杯','瓶','碟','片','根','只','块','条','颗','勺','盘','盒','包'],
+        remarkList: [],
+        campany_lable: ''
     },
     bindTimeChange:function(e){
       var temptime=e.detail.value
@@ -94,10 +100,25 @@ Page({
                 meal_type_id:4
             })
     }
+
+    request.request_get('/hmapi/getMeetUnit.hn', {}, function (res) {
+      if(res.success){
+        if(res && res.msg && res.msg.length > 0){
+          let remarkList = [];
+          for(let i = 0; i < res.msg.length; i++){
+            let item = res.msg[i].text;
+            remarkList.push(item)
+          }
+          that.setData({
+            remarkList: remarkList
+          });
+        }
+      }
+  })
 },
     addFood: function (e) {
         let info = this.data.info;
-        info.details.push(new Detail('',''));
+        info.details.push(new Detail('','',''));
         this.setData({
           info: info
         });
@@ -106,6 +127,7 @@ Page({
       setFood: function (e) {
         let index = parseInt(e.currentTarget.id.replace("food-", ""));
         let meal_content = e.detail.value;
+        meal_content = utils.checkInput(meal_content);
         let info = this.data.info;
         // debugger
         info.details[index].meal_content = meal_content;
@@ -116,6 +138,7 @@ Page({
       setAmount: function (e) {
         let index = parseInt(e.currentTarget.id.replace("amount-", ""));
         let intake_amount = e.detail.value;
+        intake_amount = utils.checkInput(intake_amount);
         let info = this.data.info;
         info.details[index].intake_amount = intake_amount;
         this.setData({
@@ -143,12 +166,13 @@ Page({
       if (time_chosen == "") {
         box.showToast("请选择用餐时间");
         return;
-       } else if(img_arr.length == 0 && foodList.length == 1&&foodList[0].meal_content==""&&foodList[0].intake_amount==""){
+       } else if(img_arr.length == 0 && foodList.length == 1&&foodList[0].meal_content==""&&foodList[0].intake_amount==""&&foodList[0].intake_company==""){
           box.showToast("请拍照记录或文字记录");
           return;
       }
     var meal_content_final = '';
     var intake_amount_final = '';
+    var intake_company_final = '';
     for(var i=0;i<foodList.length;i++){ //删除双空白项
       if(foodList[i].meal_content == '' &&foodList[i].intake_amount == ''){
           foodList.splice(i,1);
@@ -161,11 +185,16 @@ Page({
             box.showToast("请将文字记录填写完整");
             return;
         }
+        if(foodList[i].intake_company == ''){
+          box.showToast("请选择单位");
+          return;
+      }
     }
     
     for (var i in foodList) {
         meal_content_final += foodList[i].meal_content + ";";
         intake_amount_final += foodList[i].intake_amount + ";";
+        intake_company_final += foodList[i].intake_company + ";";
     }
     
     var meal_type_id= that.data.meal_type_id;
@@ -184,19 +213,22 @@ Page({
         imgArr:img_arr,
         meal_content_final : meal_content_final,
         intake_amount_final : intake_amount_final,
+        intake_company_final: intake_company_final,
         school:school
       }
        console.info("请求数据",data)
       if((data.meal_content_final==""&&data.intake_amount_final=="")&&data.imgArr.length==0){
         box.showToast("请拍照记录或文字记录");
          let info = that.data.info;
-          info.details.push(new Detail('',''));
+          info.details.push(new Detail('','',''));
           that.setData({
             info: info
           });
         return
       }
       else{
+        // console.info("请求数据---->:",data)
+        // return
         // box.showToast("ok");
           request.request_get('/api/addFoodInfo.hn', data, function (res) {
             console.info('回调', res)
@@ -367,4 +399,51 @@ Page({
       urls: img_arr
     })
   },
+  bindSelectrRemark: function (e) {
+    var that = this;
+    console.log('---->:',this.data.campany_lable)
+    let index = parseInt(this.data.campany_lable.replace("company-", ""));
+    let intake_company = that.data.remarkList[e.detail.value];
+    console.log(e.detail.value,intake_company,index,e.currentTarget.id);
+    let info = this.data.info;
+    info.details[index].intake_company = intake_company;
+    this.setData({
+      info: info
+    });
+  },
+  bindCampany(e){
+    this.setData({
+      campany_lable: e.currentTarget.dataset.id
+    })
+  },
+  setCompany(e){
+    console.log('--setCompany-->:',e)
+    let index = parseInt(e.currentTarget.id.replace("company-", ""));
+        let intake_company = e.detail.value;
+        let info = this.data.info;
+        info.details[index].intake_company = intake_company;
+        this.setData({
+          info: info
+        });
+  },
+  delFood(e){
+    let that = this;
+    console.log('delFood===>', e);
+    let info = that.data.info;
+    if(info && info.details && info.details.length == 1){
+        info.details[0].meal_content = '';
+        info.details[0].intake_amount = '';
+        info.details[0].intake_company = '';
+        that.setData({
+          info: info
+        });
+    } else {
+      let index = e.currentTarget.dataset.index;
+      let info = that.data.info;
+      info.details.splice(index, 1);
+      that.setData({
+        info: info
+      });
+    }
+  }
 })

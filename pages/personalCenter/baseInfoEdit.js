@@ -47,7 +47,7 @@ Page({
         let data = that.data.baseInfo;
         console.log(data);
         //判断参数
-        if(data.name===''||data.gender===''||data.birth===''||data.student_number===''||data.school===''){
+        if(data.name===''||data.gender===''||data.birth===''){ // ||data.student_number===''||data.school===''
             box.showToast('请补全信息再提交');
             return;
         }

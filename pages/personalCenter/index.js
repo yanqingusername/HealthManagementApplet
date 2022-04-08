@@ -43,7 +43,11 @@ Page({
             heart_rate: '-',
             calorie: '-',
             create_time: '-'
-        }
+        },
+        maxHeartRate:"-",
+        avgOxygenSaturation:"-",
+        caloriesBurned:"-",
+        step:"-",
     },
     onLoad: function () {
         let avatarUrl = wx.getStorageSync('avatarUrl');
@@ -111,6 +115,62 @@ Page({
             }
         })
     },
+    //1、获取每日心率
+    getDailyHeartRate(){
+        let that = this;
+        let data = {
+            HWid: app.globalData.userInfo.hw_id
+        }
+        request.request_new_test('/HW/getDailyHeartRate.hn', data, function (res) {
+            console.log(res.msg.maxHeartRate)
+            if (res) {
+                if (!res.success) {
+                    box.showToast(res.msg);
+                    return;
+                }
+                that.setData({
+                    maxHeartRate: res.msg.maxHeartRate
+                });
+            }
+        })
+    },
+    //1、每日血氧统计
+    getDailyBloodOxygenSaturation(){
+        let that = this;
+        let data = {
+            HWid: app.globalData.userInfo.hw_id
+        }
+        request.request_new_test('/HW/getDailyBloodOxygenSaturation.hn', data, function (res) {
+            if (res) {
+                if (!res.success) {
+                    box.showToast(res.msg);
+                    return;
+                }
+                that.setData({
+                    avgOxygenSaturation: res.msg.avgOxygenSaturation
+                });
+            }
+        })
+    },
+    //1、获取每日运动数 
+    getDailyworkout_system(){
+        let that = this;
+        let data = {
+            HWid: app.globalData.userInfo.hw_id
+        }
+        request.request_new_test('/HW/getDailyworkout_system.hn', data, function (res) {
+            if (res) {
+                if (!res.success) {
+                    box.showToast(res.msg);
+                    return;
+                }
+                that.setData({
+                    caloriesBurned: res.msg.caloriesBurned,
+                    step: res.msg.step,
+                });
+            }
+        })
+    },
     onShow: function () {
         let that = this;
         //这里面需要每次去app.js中获取用户基本信息，然后展示
@@ -129,6 +189,10 @@ Page({
              })
              console.info('调查问卷有无回调', res)
          })
+
+         this.getDailyHeartRate();
+         this.getDailyBloodOxygenSaturation();
+         this.getDailyworkout_system();
     },
 
     enter_baseInfo: function () {
@@ -143,8 +207,13 @@ Page({
         })
     },
     enter_healthReport: function () {
+        // 原来的健康报告
+        // wx.navigateTo({
+        //     url: '/pages/personalCenter/healthReport',
+        // })
+
         wx.navigateTo({
-            url: '/pages/personalCenter/healthReport',
+            url: '/pages/myHealthReport/index',
         })
     },
     enter_sports: function (e) {
@@ -153,6 +222,10 @@ Page({
         // wx.navigateTo({
         //     url: '/pages/personalCenter/sportsData?type=' + type,
         // })
+
+        wx.navigateTo({
+            url: '/pages/sportCenter/index?type=' + type,
+        })
     },
 
 

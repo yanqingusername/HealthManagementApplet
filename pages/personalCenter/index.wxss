@@ -125,7 +125,7 @@ button:active {
 
 .bd1 {
   z-index: auto;
-  width: 580rpx;
+  width: 620rpx;
   height: 142rpx;
 }
 
@@ -146,28 +146,28 @@ button:active {
 
 .main1 {
   z-index: auto;
-  width: 550rpx;
+  width: 100%;
   height: 78rpx;
-  justify-content: space-between;
-  margin: 20rpx 0 0 30rpx;
+  justify-content: space-around;
+  /* margin: 20rpx 0 0 30rpx; */
 }
 
 .box2-0 {
   z-index: auto;
-  width: 96rpx;
+  /* width: 96rpx; */
   height: 78rpx;
-  margin-right: 120rpx;
+  /* margin-right: 120rpx; */
 }
 
 .block1-0 {
   z-index: auto;
-  width: 96rpx;
+  /* width: 96rpx; */
   height: 78rpx;
 }
 
 .word4-0 {
   z-index: 97;
-  width: 120rpx;
+  /* width: 120rpx; */
   height: 44rpx;
   display: block;
   overflow-wrap: break-word;
@@ -182,7 +182,7 @@ button:active {
 
 .word5-0 {
   z-index: 96;
-  width: 96rpx;
+  /* width: 96rpx; */
   height: 34rpx;
   display: block;
   overflow-wrap: break-word;
@@ -196,20 +196,20 @@ button:active {
 
 .box2-1 {
   z-index: auto;
-  width: 96rpx;
+  /* width: 96rpx; */
   height: 78rpx;
-  margin-right: 120rpx;
+  /* margin-right: 120rpx; */
 }
 
 .block1-1 {
   z-index: auto;
-  width: 96rpx;
+  /* width: 96rpx; */
   height: 78rpx;
 }
 
 .word4-1 {
   z-index: 97;
-  width: 120rpx;
+  /* width: 120rpx; */
   height: 44rpx;
   display: block;
   overflow-wrap: break-word;
@@ -224,7 +224,7 @@ button:active {
 
 .word5-1 {
   z-index: 96;
-  width: 96rpx;
+  /* width: 96rpx; */
   height: 34rpx;
   display: block;
   overflow-wrap: break-word;
@@ -238,20 +238,20 @@ button:active {
 
 .box2-2 {
   z-index: auto;
-  width: 96rpx;
+  /* width: 96rpx; */
   height: 78rpx;
-  margin-right: 120rpx;
+  /* margin-right: 120rpx; */
 }
 
 .block1-2 {
   z-index: auto;
-  width: 96rpx;
+  /* width: 96rpx; */
   height: 78rpx;
 }
 
 .word4-2 {
   z-index: 97;
-  width: 120rpx;
+  /* width: 120rpx; */
   height: 44rpx;
   display: block;
   overflow-wrap: break-word;
@@ -266,7 +266,7 @@ button:active {
 
 .word5-2 {
   z-index: 96;
-  width: 96rpx;
+  /* width: 96rpx; */
   height: 34rpx;
   display: block;
   overflow-wrap: break-word;
@@ -427,6 +427,35 @@ button:active {
   width: 14rpx;
   height: 28rpx;
   margin-top: 6rpx;
+}
+
+.logout_view{
+  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 94;
+  /* width: 300rpx; */
+  height: 60rpx;
+  /* display: block; */
+  overflow-wrap: break-word;
+  color: rgba(35, 203, 196, 1);
+  font-size: 28rpx;
+  white-space: nowrap;
+  margin: 30rpx auto;
+  /* margin: 52rpx 0 0 310rpx; */
+}
+.logout {
+  display: flex;
+  height: 60rpx;
+  color: rgba(35, 203, 196, 1);
+  border-radius: 20rpx;
+  font-size: 26rpx;
+  width: 200rpx;
+  border: 1px solid rgba(35, 203, 196, 1);
+  justify-content: center;
+  align-items: center;
+  
 }
 
 .word9 {

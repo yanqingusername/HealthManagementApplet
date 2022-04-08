@@ -2,22 +2,22 @@
     <image src="/image/icons/logo.png" class="logo"></image>
     <view  class="title">健康与膳食札记</view>
     <view>
-        <form bindsubmit="login">
+        <form>
             <view class="P1">
                 <view class="P2" style="height:187rpx;">
                     <view class="P3">
-                        <input class='font_input' placeholder='输入手机号'  maxlength="11" name="phone" type="text" bindinput="phoneInput" value="{{phone}}"></input>
-                        <view class="bt_code font_code" bindtap="getCode" disabled="{{codeBtState}}" style="{{codeBtState?'color:#CCCCCC':'color:#23CBC4'}}">{{codeBtText}}</view>
+                        <input class='font_input' placeholder='请输入账号'  maxlength="11" name="phone" type="text" bindinput="phoneInput" value="{{phone}}"></input>
+                        <!-- <view class="bt_code font_code" bindtap="getCode" disabled="{{codeBtState}}" style="{{codeBtState?'color:#CCCCCC':'color:#23CBC4'}}">{{codeBtText}}</view> -->
                     </view>
                 </view>
                 <view class="P2" style="height:129rpx;">
                     <view class="P3">
-                        <input class='font_input' placeholder='输入验证码' type="number" name="code" maxlength="4" bindinput="codeInput" value="{{code}}"></input>
+                        <input class='font_input' placeholder='请输入密码' type="number" name="code" maxlength="6" password="true" bindinput="codeInput" value="{{code}}"></input>
                     </view>
                 </view>
             </view>
             <view style="margin-top:159rpx;">
-                <button class='bt_login font_login' bind:tap="getUserProfile" form-type="submit">登录</button>
+                <button class='bt_login font_login' bind:tap="login" form-type="submit">登录</button>
             </view>
         </form>
     </view>

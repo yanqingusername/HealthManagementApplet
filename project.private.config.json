@@ -1,0 +1,31 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "name": "pages/bluetooth/index",
+          "pathName": "pages/bluetooth/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "",
+          "pathName": "pages/myHealthReport/index",
+          "query": "",
+          "scene": null,
+          "launchMode": "default"
+        }
+      ]
+    }
+  }
+}
