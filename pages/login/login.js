@@ -125,20 +125,20 @@ Page({
         let phone = that.data.phone;
         let code = that.data.code;
         // var phoneCode = that.data.phoneCode;
-        console.log('手机号和验证码：', phone, code);
+        // console.log('手机号和验证码：', phone, code);
         // console.log(phoneCode);
         if(phone == '13120916260' ){
-            that.toLogin(phone);
+            that.toLogin(phone,code);
             return;
         }else{
             if (phone == '') {
-                box.showToast("请输入手机号");
+                box.showToast("请输入账号");
                 return;
             } 
-            if (!utils.checkPhone(phone)) {
-                box.showToast("手机号有误");
-                return;
-            }
+            // if (!utils.checkPhone(phone)) {
+            //     box.showToast("手机号有误");
+            //     return;
+            // }
             if (code == '') {
                 box.showToast("请输入密码");
                 return;
@@ -156,14 +156,15 @@ Page({
             //     return;
             // } 
             that.getUserProfile();
-            that.toLogin(phone);
+            that.toLogin(phone,code);
         }
     },2000),
-    toLogin:function (phone){
+    toLogin:function (phone,code){
         console.log("开始登录" + phone);
         var data = {
             openid: app.globalData.openid,
-            phone: phone,
+            username: phone,
+            password: code
         }
         request.request_get('/api/loginApplet.hn', data, function (res) {
             console.info('回调', res)

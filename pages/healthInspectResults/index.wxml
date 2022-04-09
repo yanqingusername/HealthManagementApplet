@@ -17,14 +17,28 @@
     <view style="height: 30rpx;"></view>
   </view>
 
-  <view wx:if="{{id==4}}">
-    <view class="data_view">
-      <block wx:for="{{1}}" wx:for-item="s" wx:key="key">
+  <view wx:if="{{csstype==2 && method!='getphysiqueinfo'}}">
+    <view class="data_view" wx:if="{{dataList.length > 0}}">
+      <block wx:for="{{dataList}}" wx:for-item="s" wx:key="key">
         <view class="layer1 flex-col">
-          <view class="data_title">2021-10-19</view>
+          <view class="data_title">{{s.time}}</view>
+          <block wx:for="{{s.info}}" wx:for-item="item" wx:key="index">
+            <view class="data_item_view">
+              <view class="data_items">
+                <view class="data_items_title">{{item.project_name}}</view>
+                <view class="data_items_title" style="color: {{(item.resultTips =='↑') ? '#F03A3A':'#333333'}}">{{item.result}}</view>
+              </view>
+              <view class="data_items" style="margin-top: 10rpx;">
+                <view class="data_items_value">单位：{{item.unit || "-"}}</view>
+                <view class="data_items_value">参考范围：{{item.reference || '-'}}</view>
+              </view>
+            </view>
+          </block>
+
+          <!-- <view class="data_title">2021-10-19</view>
           <view class="data_item_view">
             <view class="data_items">
-              <view class="data_items_title">★白细胞</view>
+              <view class="data_items_title"></view>
               <view class="data_items_title">5.05</view>
             </view>
             <view class="data_items" style="margin-top: 10rpx;">
@@ -121,7 +135,7 @@
               <view class="data_items_value">单位：*10^9/L</view>
               <view class="data_items_value">单位：*10^9/L</view>
             </view>
-          </view>
+          </view> -->
 
         </view>
       </block>
@@ -135,7 +149,7 @@
   </view>
 
   <view wx:if="{{csstype==3}}">
-    <view class="data_view">
+    <view class="data_view" wx:if="{{dataList.length > 0}}">
       <block wx:for="{{dataList}}" wx:for-item="s" wx:key="key">
         <view class="layer1 flex-col">
           <view class="data_title">{{s.time}}</view>
@@ -179,8 +193,8 @@
     <view style="height: 30rpx;"></view>
   </view>
   
-  <view wx:if="{{csstype==2}}">
-    <view class="data_view">
+  <view wx:if="{{csstype==2 && method=='getphysiqueinfo'}}">
+    <view class="data_view" wx:if="{{dataList.length > 0}}">
       <block wx:for="{{dataList}}" wx:for-item="s" wx:key="index">
         <view class="layer1 flex-col">
           <view class="data_title">{{s.time}}</view>

@@ -122,7 +122,6 @@ Page({
             HWid: app.globalData.userInfo.hw_id
         }
         request.request_new_test('/HW/getDailyHeartRate.hn', data, function (res) {
-            console.log(res.msg.maxHeartRate)
             if (res) {
                 if (!res.success) {
                     box.showToast(res.msg);

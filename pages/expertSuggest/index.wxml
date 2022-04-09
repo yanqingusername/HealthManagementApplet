@@ -1,22 +1,16 @@
 <view class="page flex-col">
   <view >
     <view class="data_view">
-      <block wx:for="{{10}}" wx:for-item="s" wx:key="key">
+      <block wx:for="{{expertAdviceList}}" wx:for-item="s" wx:key="index">
         <view class="layer1 flex-col">
-          <view class="data_title">2021-10-19</view>
+          <view class="data_title">{{s.create_time}}</view>
           <view class="data_items">
-            <view class="data_items_title">运动干预期结束后的指导和建议：</view>
-            <text class="data_items_value">1. 尿蛋白阳性：尿中出现蛋白多见于肾脏疾病，少数可见于生理性原因（如身体剧烈运动、高热、低温刺激。）建议复查尿常规；
-              2. 血常规中血红细胞增多：可能与空腹抽血有关；
-              3. 运动干预期间需要坚持，饮食需要保持规律；</text>
+            <!-- <view class="data_items_title">{{s.create_time}}</view> -->
+            <text class="data_items_value">{{s.text}}</text>
           </view>
         </view>
       </block>
     </view>
     <view style="height: 30rpx;"></view>
   </view>
-  
-  
-  
- 
 </view>

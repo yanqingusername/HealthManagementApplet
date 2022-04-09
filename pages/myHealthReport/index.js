@@ -46,6 +46,17 @@ Page({
             wx.navigateTo({
                 url: `/pages/healthInspectResults/index?method=${method}&csstype=${csstype}&title=${title}&type=${type}`,
             })
+        }else{
+            //没这个类型
+            wx.showModal({
+                title: '温馨提示',
+                content: '暂无此类的数据',
+                showCancel: false, //是否显示取消按钮
+                cancelText: "否", //默认是“取消”
+                confirmText: "好的", //默认是“确定”
+                success: function (res) {
+                }
+            })
         }
     },
 });

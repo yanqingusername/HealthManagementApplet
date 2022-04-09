@@ -6,7 +6,7 @@
             <view class="P1">
                 <view class="P2" style="height:187rpx;">
                     <view class="P3">
-                        <input class='font_input' placeholder='请输入账号'  maxlength="11" name="phone" type="text" bindinput="phoneInput" value="{{phone}}"></input>
+                        <input class='font_input' placeholder='请输入账号' name="phone" type="text" bindinput="phoneInput" value="{{phone}}"></input>
                         <!-- <view class="bt_code font_code" bindtap="getCode" disabled="{{codeBtState}}" style="{{codeBtState?'color:#CCCCCC':'color:#23CBC4'}}">{{codeBtText}}</view> -->
                     </view>
                 </view>
