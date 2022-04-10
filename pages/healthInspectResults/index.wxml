@@ -1,5 +1,14 @@
 <view class="page flex-col">
 
+<view class="data_view" wx:if="{{csstype==2 && method=='getphysiqueinfo'}}">
+  <view class="layer1 flex-col" style="padding: 0rpx;">
+          <view class="data_items_new" style="border-bottom: none;padding: 20rpx 10rpx 20rpx 30rpx;" bind:tap="bindImg" data-type="1">
+            <view class="data_items_title_new" style="font-size: 36rpx;">标准值参考范围</view>
+            <image class="data_items_img_new" src="/image/icons/right.png" mode="aspectFill"></image>
+          </view>
+      </view>
+</view>
+
   <view wx:if="{{id==10}}">
     <view class="data_view">
       <block wx:for="{{10}}" wx:for-item="s" wx:key="key">

@@ -43,4 +43,9 @@ Page({
             }
         })
     },
+    bindImg(){
+        wx.navigateTo({
+            url: '/pages/healthImg/index',
+        })
+    }
 });
