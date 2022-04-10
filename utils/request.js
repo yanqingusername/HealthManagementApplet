@@ -10,9 +10,9 @@
 //var apiurl = 'http://dev6.coyotebio-lab.com//wisdomLivestock'   // 测试服务器
 //var apiurl = 'https://www.prohealth-wch.com:8443/wisdomLivestock'    //正式服务器
 
-var apiurl  = 'http://ygldev.coyotebio-lab.com:8080/HM'     // 测试服务器
+// var apiurl  = 'http://ygldev.coyotebio-lab.com:8080/HM'     // 测试服务器
 
-// var apiurl ='https://monitor.coyotebio-lab.com:8443/HM' //正式服务器
+var apiurl ='https://monitor.coyotebio-lab.com:8443/HM' //正式服务器
 
 // 常用request get封装-异步
 function request_get(controller, data, cb) {
@@ -95,7 +95,8 @@ function upload_file(controller, file, name, data, cb) {
 }
 
 function request_new_test(controller, data, cb) {
-    let apiurl = 'http://ygldev.coyotebio-lab.com:8040/HM'//新增测试服务器
+    // let apiurl = 'http://ygldev.coyotebio-lab.com:8040/HM'//新增测试服务器
+    let apiurl = 'https://ygldev.coyotebio-lab.com:8443/HM'//新增正式服务器
     var url = apiurl + controller;
     wx.request({
         url: url,
