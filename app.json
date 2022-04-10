@@ -20,7 +20,8 @@
         "pages/myHealthReport/index",
         "pages/expertSuggest/index",
         "pages/healthInspectResults/index",
-        "pages/healthImg/index"
+        "pages/healthImg/index",
+        "pages/healthpdf/index"
         
         
     ],
