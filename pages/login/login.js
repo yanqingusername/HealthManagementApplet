@@ -155,11 +155,11 @@ Page({
             //     box.showToast("验证码错误");
             //     return;
             // } 
-            that.getUserProfile();
             that.toLogin(phone,code);
         }
     },2000),
     toLogin:function (phone,code){
+        let that = this;
         console.log("开始登录" + phone);
         var data = {
             openid: app.globalData.openid,
@@ -173,11 +173,14 @@ Page({
                     box.showToast(res.msg);
                     return;
                 }
+                that.getUserProfile();
                 console.log('登录成功')
                 app.globalData.userInfo = res.msg;
                 wx.switchTab({
                     url: '/pages/index/index',
                 })
+            }else{
+                box.showToast('网络不稳定，请重试');
             }
         })
     },

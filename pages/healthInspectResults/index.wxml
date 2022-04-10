@@ -140,11 +140,9 @@
         </view>
       </block>
     </view>
-    <!-- <view wx:else>
-      <view>
-        <text>暂无数据</text>
-      </view>
-    </view> -->
+    <view wx:else style="display: flex;justify-content: center;align-items: center;padding: 50rpx;">
+        <view>暂无数据</view>
+    </view>
     <view style="height: 30rpx;"></view>
   </view>
 
@@ -169,6 +167,9 @@
           </block>
         </view>
       </block>
+    </view>
+    <view wx:else style="display: flex;justify-content: center;align-items: center;padding: 50rpx;">
+        <view>暂无数据</view>
     </view>
     <view style="height: 30rpx;"></view>
   </view>
@@ -203,7 +204,7 @@
               <view class="data_items">
                 <view class="data_items_title" wx:if="{{item.sign_name == 'height'}}">身高</view>
                 <view class="data_items_title" wx:if="{{item.sign_name == 'Weight'}}">体重</view>
-                <view class="data_items_title" wx:if="{{item.sign_name == 'bmi'}}">质量指数</view>
+                <view class="data_items_title" wx:if="{{item.sign_name == 'bmi'}}">身体质量指数</view>
                 <view class="data_items_title" wx:if="{{item.sign_name == 'systolic'}}">收缩压</view>
                 <view class="data_items_title" wx:if="{{item.sign_name == 'diastolic'}}">舒张压</view>
                 <view class="data_items_title">{{item.sign_value}}</view>
@@ -248,11 +249,9 @@
         </view>
       </block>
     </view>
-    <!-- <view wx:else>
-      <view>
-        <text>暂无数据</text>
-      </view>
-    </view> -->
+   <view wx:else style="display: flex;justify-content: center;align-items: center;padding: 50rpx;">
+        <view>暂无数据</view>
+    </view>
     <view style="height: 30rpx;"></view>
 
     <!-- <view style="height: 160rpx;"></view> -->

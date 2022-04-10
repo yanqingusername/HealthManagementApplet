@@ -9,7 +9,7 @@
                     </view>
                     <view class="group2 flex-col">
                         <text class="word2">{{name==''?'未设置姓名':name}}</text>
-                        <text class="word3">{{school==''?'未设置学校':school}}</text>
+                        <!-- <text class="word3">{{school==''?'未设置学校':school}}</text> -->
                     </view>
                 </view>
             </view>

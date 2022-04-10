@@ -50,7 +50,16 @@ Page({
         intake_company_final:'',
         // remarkList: ['个','碗','杯','瓶','碟','片','根','只','块','条','颗','勺','盘','盒','包'],
         remarkList: [],
-        campany_lable: ''
+        campany_lable: '',
+        dialogData: {
+          title: "确认删除该条文字记录吗？",
+          titles: "",
+          ptitle: "",
+          cancel: "取消",
+          sure: "确认"
+        },
+        showDialog: false,
+        closeIndex: -1,
     },
     bindTimeChange:function(e){
       var temptime=e.detail.value
@@ -132,8 +141,10 @@ Page({
       if (time_chosen == "") {
         box.showToast("请选择用餐时间");
         return;
-       }
-      else if(img_arr.length == 0 && foodList.length == 1&&foodList[0].meal_content==""&&foodList[0].intake_amount==""&&foodList[0].intake_company==""){
+       }else if(foodList.length == 0){
+        box.showToast("请填写文字记录");
+        return;
+      } else if(img_arr.length == 0 && foodList.length == 1&&foodList[0].meal_content==""&&foodList[0].intake_amount==""&&foodList[0].intake_company==""){
           box.showToast("请拍照记录或文字记录");
           return;
       }
@@ -430,6 +441,7 @@ Page({
     })
   },
   bindSelectrRemark: function (e) {
+    wx.hideKeyboard();
     var that = this;
     console.log('---->:',this.data.campany_lable)
     let index = parseInt(this.data.campany_lable.replace("company-", ""));
@@ -442,6 +454,7 @@ Page({
     });
   },
   bindCampany(e){
+    wx.hideKeyboard();
     this.setData({
       campany_lable: e.currentTarget.dataset.id
     })
@@ -457,7 +470,21 @@ Page({
         });
   },
   delFood(e){
-    let that = this;
+    let closeIndex = e.currentTarget.dataset.index;
+    console.log(closeIndex)
+		this.setData({
+			showDialog: true,
+      closeIndex: closeIndex
+		});
+	},
+	dialogCancel() {
+		this.setData({
+			showDialog: false,
+      closeIndex: -1
+		});
+	},
+	dialogSure(e) {
+		let that = this;
     console.log('delFood===>', e);
     let info = that.data.info;
     if(info && info.details && info.details.length == 1){
@@ -465,15 +492,19 @@ Page({
         info.details[0].intake_amount = '';
         info.details[0].intake_company = '';
         that.setData({
-          info: info
+          info: info,
+          showDialog: false
         });
     } else {
-      let index = e.currentTarget.dataset.index;
-      let info = that.data.info;
-      info.details.splice(index, 1);
-      that.setData({
-        info: info
-      });
+      if(that.data.closeIndex != -1){
+        let index = that.data.closeIndex;
+        let info = that.data.info;
+        info.details.splice(index, 1);
+        that.setData({
+          info: info,
+          showDialog: false
+        });
+      }
     }
-  }
+	},
 })

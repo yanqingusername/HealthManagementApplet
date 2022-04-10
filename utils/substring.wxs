@@ -1,0 +1,15 @@
+
+
+  var setreplace = function (timeString) {
+    if (!timeString) {  //2022-03-08 15:23:99
+      return ''
+    }
+    var time = timeString.replace(getRegExp('\d','g'), "*")
+    return time
+  }
+  
+
+
+  module.exports = {
+    setreplace: setreplace
+}

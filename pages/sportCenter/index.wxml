@@ -1,6 +1,6 @@
 <view class="page flex-col">
   <view wx:if="{{type==2}}">
-    <view class="data_view">
+    <view class="data_view" wx:if="{{heartRateList.length > 0}}">
       <block wx:for="{{heartRateList}}" wx:for-item="s" wx:key="index">
         <view class="layer1 flex-col">
           <view class="data_title">{{s.recordtime}}</view>
@@ -19,16 +19,14 @@
         </view>
       </block>
     </view>
-    <!-- <view wx:else>
-      <view>
-        <text>暂无数据</text>
-      </view>
-    </view> -->
+    <view wx:else style="display: flex;justify-content: center;align-items: center;padding: 50rpx;">
+        <view>暂无数据</view>
+    </view>
     <view style="height: 30rpx;"></view>
   </view>
   
   <view wx:if="{{type==4}}">
-    <view class="data_view">
+    <view class="data_view" wx:if="{{oxygeninfoList.length > 0}}">
       <block wx:for="{{oxygeninfoList}}" wx:for-item="s" wx:key="index">
         <view class="layer1 flex-col">
           <view class="data_title">{{s.recordtime}}</view>
@@ -47,16 +45,14 @@
         </view>
       </block>
     </view>
-    <!-- <view wx:else>
-      <view>
-        <text>暂无数据</text>
-      </view>
-    </view> -->
+    <view wx:else style="display: flex;justify-content: center;align-items: center;padding: 50rpx;">
+        <view>暂无数据</view>
+    </view>
     <view style="height: 30rpx;"></view>
   </view>
 
   <view wx:if="{{type==1 || type==3}}">
-    <view class="data_view">
+    <view class="data_view" wx:if="{{workOutinfoList.length > 0}}">
       <block wx:for="{{workOutinfoList}}" wx:for-item="s" wx:key="index">
         <view class="layer1 flex-col">
           <view class="data_title">{{s.time}}</view>
@@ -92,11 +88,9 @@
         </view>
       </block>
     </view>
-    <!-- <view wx:else>
-      <view>
-        <text>暂无数据</text>
-      </view>
-    </view> -->
+    <view wx:else style="display: flex;justify-content: center;align-items: center;padding: 50rpx;">
+        <view>暂无数据</view>
+    </view>
     <view style="height: 30rpx;"></view>
   </view>
  

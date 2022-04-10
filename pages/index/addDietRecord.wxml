@@ -52,7 +52,7 @@
           <input class="word6" style="width:200rpx !important;" placeholder="请填写食物名称" id="food-{{index}}" bindinput="setFood" value="{{item.meal_content}}"></input>
         </view>
         <view class="group2 flex-col" style="width:210rpx;">
-          <input class="txt2" style="width:170rpx !important;" placeholder="请填写摄入量" id="amount-{{index}}" bindinput="setAmount" value="{{item.intake_amount}}"></input>
+          <input class="txt2" style="width:170rpx !important;" type="number" placeholder="请填写摄入量" id="amount-{{index}}" bindinput="setAmount" value="{{item.intake_amount}}"></input>
         </view>
         <view class="group2 flex-col" catch:tap="bindCampany" data-id="company-{{index}}" style="width:150rpx;flex-direction: row;justify-content: space-between;display: flex;align-items: center;padding: 0rpx 10rpx 0rpx 16rpx;">
           <picker bindchange="bindSelectrRemark" range="{{remarkList}}" style="width:100%;">
@@ -79,3 +79,6 @@
   </view>
 </view>
 <!-- <timePicker pickerShow="{{startIsPickerShow}}" id="picker" wx:if="{{startIsPickerRender}}" bind:hidePicker="start_time_hide" bind:setPickerTime="set_start_time" config="{{pickerConfig}}"></timePicker> -->
+
+<!-- 弹框 -->
+<dialog-cus showDialog='{{showDialog}}' datas="{{dialogData}}" catch:dialogCancel="dialogCancel" catch:dialogSure="dialogSure"/>
