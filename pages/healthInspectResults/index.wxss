@@ -100,3 +100,7 @@ color: #FFFFFF;
   font-size: 28rpx;
   color: #333333;
 }
+
+.data_items_new:last-child{
+  border-bottom: none;
+}

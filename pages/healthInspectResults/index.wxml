@@ -192,7 +192,7 @@
             <!-- <view class="data_item_view" bind:tap="bindClick" data-url="{{item.urlpdf}}">
               <image src="{{item.urlimg}}" mode="aspectFit" />
             </view> -->
-            <view class="data_items_new" style="border-bottom: none;" bind:tap="bindClick" data-url="{{item.urlpdf}}">
+            <view class="data_items_new" bind:tap="bindClick" data-url="{{item.urlpdf}}">
               <view class="data_items_title_new" style="font-size: 32rpx;">查看报告</view>
               <image class="data_items_img_new" src="/image/icons/right.png" mode="aspectFill"></image>
             </view>
