@@ -61,11 +61,12 @@ Page({
         if (!(url && url.length)) {
             return;
         }
-        wx.showLoading({
-            title: '文件加载中...',
-            mask:true,
-            duration:3000
-          })
+        // wx.showLoading({
+        //     title: '文件加载中...',
+        //     mask:true,
+        //     duration:3000
+        //   })
+        box.showToast('文件加载中...')
         wx.downloadFile({
             url: url,
             success: (res) => {
@@ -76,14 +77,14 @@ Page({
                             console.error(err);
                         },
                         complete: () => {
-                            wx.hideLoading();
+                            // wx.hideLoading();
                         }
                     })
                 }
             },
             fail: (err) => {
                 console.error(err);
-                wx.hideLoading();
+                // wx.hideLoading();
             }
         })
     }
