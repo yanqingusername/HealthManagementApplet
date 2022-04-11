@@ -27,7 +27,7 @@ Page({
     getMethod(){
         let that = this;
         let data = {
-            userid: app.globalData.userInfo.user_id,
+            s_id: app.globalData.userInfo.id,
             type: this.data.type
         }
         let url = '/hmapi/'+ this.data.method +'.hn';
