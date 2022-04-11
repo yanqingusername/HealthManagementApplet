@@ -51,9 +51,40 @@ Page({
     bindClick(e){
         let url = e.currentTarget.dataset.url;
         if(url){
-            wx.navigateTo({
-                url: `/pages/healthpdf/index?url=${url}`,
-            })
+            // wx.navigateTo({
+            //     url: `/pages/healthpdf/index?url=${url}`,
+            // })
+            this.openFile(url);
         }
+    },
+    openFile(url) {
+        if (!(url && url.length)) {
+            return;
+        }
+        wx.showLoading({
+            title: '文件加载中...',
+            mask:true,
+            duration:3000
+          })
+        wx.downloadFile({
+            url: url,
+            success: (res) => {
+                if (res.tempFilePath) {
+                    wx.openDocument({
+                        filePath: res.tempFilePath,
+                        fail: (err) => {
+                            console.error(err);
+                        },
+                        complete: () => {
+                            wx.hideLoading();
+                        }
+                    })
+                }
+            },
+            fail: (err) => {
+                console.error(err);
+                wx.hideLoading();
+            }
+        })
     }
 });
