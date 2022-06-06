@@ -2,10 +2,11 @@
   <view class="page flex-col">
     <view class="group1 flex-col">
       <block wx:for="{{msgs}}" wx:for-item="m">
-        <text class="word3">【{{m.type}}】{{m.title}}</text>
-      <text class="word4">
+      <text class="word3">【{{m.type}}】{{m.title}}</text>
+      <!-- <text class="word4">
         {{m.content}}
-      </text>
+      </text> -->
+      <text class="word4" wx:if="{{m.content}}" style="margin-top:20rpx;">{{m.content}}</text>
       <text class="info2">{{m.send_time}}</text>
       <view class="br"></view>
       </block>

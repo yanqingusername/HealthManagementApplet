@@ -334,7 +334,8 @@ Page({
           for (var i = 0; i < filePath.length; i++) {
             wx.uploadFile({
               //url: 'https://8.130.48.31:8080/HM/api/upload.hn',  // 测试服务器  孙仕豪
-              url: 'https://scldev.coyotebio-lab.com:8443/HM/api/upload.hn',  // 测试服务器  孙仕豪
+              // url: 'https://scldev.coyotebio-lab.com:8443/HM/api/upload.hn',  // 测试服务器  孙仕豪
+              url: 'https://monitor.coyotebio-lab.com:8443/HM/api/upload.hn',  // 正式服务器
               // url:'http://ygldev.coyotebio-lab.com:8080/HM/api/upload.hn',
               //url : 'http://ygldev.coyotebio-lab.com/flash20AppletBackend/OrderController/upload.hn',  // 测试服务器  于光良
               //url: 'https://8.130.25.5/flash20AppletBackend/api/upload.hn',   // 宋彦睿
