@@ -552,11 +552,11 @@ button:active {
 }
 .P2{
   border-radius: 29rpx;
-  width: 90%;
+  /* width: 90%; */
   padding: 20rpx 0;
   margin-bottom: 30rpx;
-  margin-left: 5%;
-  margin-right: 5%;
+  /* margin-left: 5%; */
+  /* margin-right: 5%; */
   box-shadow: 0px 4px 16px 0px rgba(0,0,0,0.06);
 }
 .img_item{
