@@ -508,4 +508,9 @@ Page({
       }
     }
 	},
+  bindImg(){
+    wx.navigateTo({
+        url: '/pages/healthImg/index?typestring=2',
+    })
+  },
 })

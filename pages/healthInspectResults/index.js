@@ -45,7 +45,7 @@ Page({
     },
     bindImg(){
         wx.navigateTo({
-            url: '/pages/healthImg/index',
+            url: '/pages/healthImg/index?typestring=1',
         })
     },
     bindClick(e){

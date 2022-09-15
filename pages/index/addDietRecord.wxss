@@ -379,3 +379,31 @@ button:active {
   width: 40rpx;
   height: 40rpx;
 }
+
+.new_center{
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 30rpx 40rpx 0rpx 40rpx;
+}
+.new_center_1{
+  height: 40rpx;
+  display: block;
+  overflow-wrap: break-word;
+  color: rgba(255, 102, 42, 1);
+  font-size: 28rpx;
+  font-family: PingFangSC-Regular;
+  white-space: nowrap;
+  line-height: 40rpx;
+  text-align: left;
+}
+.new_center_2 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(35, 203, 196, 1);
+  color: #FFFFFF;
+  font-size: 28rpx;
+  border-radius: 30rpx;
+  padding: 12rpx 20rpx;
+}

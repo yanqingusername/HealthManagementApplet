@@ -1,13 +1,17 @@
 <view class="page flex-col">
 
   <view >
-    <view class="data_view">
+    <view class="data_view" wx:if="{{typeString == 1}}">
         <view class="layer1 flex-col">
           <view class="data_item_view">
             <image src="/image/icons/icon_img_04_10_01.png" mode="aspectFit" />
             <image src="/image/icons/icon_img_04_10_02.png" mode="aspectFit" style="margin-top:50rpx;"/>
           </view>
         </view>
+    </view>
+
+    <view class="data_view" wx:if="{{typeString == 2}}">
+        <image src="/image/icons/icon_img_09_15_01.png" mode="widthFix" />
     </view>
     
     <view style="height: 30rpx;"></view>

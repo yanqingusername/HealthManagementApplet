@@ -46,7 +46,13 @@
           </view>
         </block>
       </view>
-      <text class="word5">如果忘记拍照可以文字记录哦～</text>
+      <!-- <text class="word5">如果忘记拍照可以文字记录哦～</text> -->
+
+      <view class="new_center">
+        <view class="new_center_1">如果忘记拍照可以文字记录哦～</view>
+        <view class="new_center_2" bind:tap="bindImg">拍照说明</view>
+      </view>
+
       <view wx:for="{{info.details}}" wx:key="key" class="block6 flex-row">
         <view class="group1 flex-col" style="width:240rpx;">
           <input class="word6" style="width:200rpx !important;" placeholder="请填写食物名称" id="food-{{index}}" bindinput="setFood" value="{{item.meal_content}}"></input>
