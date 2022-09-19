@@ -5,7 +5,6 @@
 */
 
 // 参数配置
-//var apiurl = 'http://localhost:8080/HM'     // 本地测试
 // var apiurl = 'https://scldev.coyotebio-lab.com:8443/HM'//测试服务器 孙仕豪
 //var apiurl = 'http://dev6.coyotebio-lab.com//wisdomLivestock'   // 测试服务器
 //var apiurl = 'https://www.prohealth-wch.com:8443/wisdomLivestock'    //正式服务器
