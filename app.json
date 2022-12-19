@@ -21,8 +21,10 @@
         "pages/expertSuggest/index",
         "pages/healthInspectResults/index",
         "pages/healthImg/index",
-        "pages/healthpdf/index"
-        
+        "pages/healthpdf/index",
+        "pages/sleepingLineChart/index",
+        "pages/runningLineChart/index",
+        "pages/sleepingCenter/index"
         
     ],
     "window": {

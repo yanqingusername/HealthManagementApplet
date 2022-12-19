@@ -226,7 +226,27 @@ Page({
             url: '/pages/sportCenter/index?type=' + type,
         })
     },
-
+    bindSleepingLineChart: function (e) {
+        let id = app.globalData.userInfo.hw_id
+        let name = this.data.name;
+        if(id){
+            // wx.navigateTo({
+            //     url: `/pages/sleepingLineChart/index?hwid=${id}&name=${name}`,
+            // })
+            wx.navigateTo({
+                url: `/pages/sleepingCenter/index?hwid=${id}&name=${name}`,
+            })
+        }
+    },
+    bindRunningLineChart: function (e) {
+        let id = app.globalData.userInfo.hw_id;
+        let name = this.data.name;
+        if(id){
+            wx.navigateTo({
+                url: `/pages/runningLineChart/index?hwid=${id}&name=${name}`,
+            })
+        }
+    },
 
     // 退出当前账号
     exit: function () {

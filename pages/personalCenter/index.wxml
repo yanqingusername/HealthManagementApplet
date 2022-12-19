@@ -47,13 +47,13 @@
             <view class="mod3 flex-col">
                 <view class="group3 flex-col">
                     <text class="txt1">我的健康资料</text>
-                    <view class="bd2 flex-row" bindtap="enter_baseInfo">
+                    <view class="bd2 flex-row" bindtap="enter_baseInfo" style="margin-top:30rpx;">
                         <text class="txt2">基本信息</text>
                         <view class="layer3 flex-col">
                             <image src="/image/icons/right.png" mode="aspectFill"></image>
                         </view>
                     </view>
-                    <view class="bd3 flex-col"></view>
+                    <view class="bd3 flex-col" style="margin-top:20rpx;"></view>
                     <view class="bd4 flex-row" bindtap="enter_questionnaire">
                         <text class="word6">问卷调查</text>
                         <view wx:if="{{questionstate==0}}">
@@ -63,9 +63,25 @@
                             <image src="/image/icons/right.png" mode="aspectFill"></image>
                         </view>
                     </view>
-                    <view class="bd5 flex-col"></view>
+                    <view class="bd5 flex-col" style="margin-top:20rpx;"></view>
                     <view class="bd6 flex-row" bindtap="enter_healthReport">
                         <text class="word8">我的健康报告</text>
+                        <view class="layer3 flex-col">
+                            <image src="/image/icons/right.png" mode="aspectFill"></image>
+                        </view>
+                    </view>
+
+                    <view class="bd5 flex-col" style="margin-top:20rpx;"></view>
+                    <view class="bd6 flex-row" bindtap="bindSleepingLineChart">
+                        <text class="word8">睡眠列表</text>
+                        <view class="layer3 flex-col">
+                            <image src="/image/icons/right.png" mode="aspectFill"></image>
+                        </view>
+                    </view>
+
+                    <view class="bd5 flex-col" style="margin-top:20rpx;"></view>
+                    <view class="bd6 flex-row" bindtap="bindRunningLineChart">
+                        <text class="word8">运动折线图</text>
                         <view class="layer3 flex-col">
                             <image src="/image/icons/right.png" mode="aspectFill"></image>
                         </view>
